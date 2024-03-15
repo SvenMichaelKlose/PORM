@@ -1,0 +1,608 @@
+[
+    {
+        "description":  "false",
+        "data":         null,
+        "schema":       false,
+        "valid":        false
+    },
+
+    {
+        "description":  "true",
+        "data":         null,
+        "schema":       true,
+        "valid":        true
+    },
+
+    {
+        "description":  "null",
+        "data":         null,
+        "schema":       null,
+        "valid":        true
+    },
+
+    {
+        "description":  "null with error",
+        "data":         false,
+        "schema":       null,
+        "valid":        false
+    },
+
+    {
+        "description":  "const 0",
+        "data":         0,
+        "schema":       {"const": 0},
+        "valid":        true
+    },
+
+    {
+        "description":  "const 0 and null",
+        "data":         null,
+        "schema":       {"const": 0},
+        "valid":        false
+    },
+
+    {
+        "description":  "const 0 and \"0\"",
+        "data":         "0",
+        "schema":       {"const": 0},
+        "valid":        false
+    },
+
+    {
+        "description":  "string",
+        "data":         "some_string",
+        "schema":       "string",
+        "valid":        true
+    },
+
+    {
+        "description":  "not string",
+        "data":         1,
+        "schema":       "string",
+        "valid":        false
+    },
+
+    {
+        "description":  "minLength 1 on empty string",
+        "data":         "",
+        "schema":       { "type": "string", "minLength": 1 },
+        "valid":        false
+    },
+
+    {
+        "description":  "minLength",
+        "data":         "some_string",
+        "schema":       { "type": "string", "minLength": 3 },
+        "valid":        true
+    },
+
+    {
+        "description":  "minLength with error",
+        "data":         "some_string",
+        "schema":       { "type": "string", "minLength": 30 },
+        "valid":        false
+    },
+
+    {
+        "description":  "maxLength",
+        "data":         "some_string",
+        "schema":       { "type": "string", "maxLength": 30 },
+        "valid":        true
+    },
+
+    {
+        "description":  "maxLength with valid",
+        "data":         "some_string",
+        "schema":       { "type": "string", "maxLength": 3 },
+        "valid":        false
+    },
+
+    {
+        "description":  "patterm",
+        "data":         "some_foo string",
+        "schema":       { "type": "string", "pattern": "foo" },
+        "valid":        true
+    },
+
+    {
+        "description":  "patterm with error",
+        "data":         "some_string",
+        "schema":       { "type": "string", "pattern": "foo" },
+        "valid":        false
+    },
+
+    {
+        "description":  "number",
+        "data":         1,
+        "schema":       "number",
+        "valid":        true
+    },
+
+    {
+        "description":  "multipleOf",
+        "data":         9,
+        "schema":       { "type": "number", "multipleOf": 3 },
+        "valid":        true
+    },
+
+    {
+        "description":  "multipleOf with error",
+        "data":         10,
+        "schema":       { "type": "number", "multipleOf": 3 },
+        "valid":        false
+    },
+
+    {
+        "description":  "minimum",
+        "data":         10,
+        "schema":       { "type": "number", "minimum": 10 },
+        "valid":        true
+    },
+
+    {
+        "description":  "minimum too high",
+        "data":         9,
+        "schema":       { "type": "number", "minimum": 10 },
+        "valid":        false
+    },
+
+    {
+        "description":  "exclusiveMinimum",
+        "data":         11,
+        "schema":       { "type": "number", "exclusiveMinimum": 10 },
+        "valid":        true
+    },
+
+    {
+        "description":  "exclusiveMinimum too high",
+        "data":         10,
+        "schema":       { "type": "number", "exclusiveMinimum": 10 },
+        "valid":        false
+    },
+
+    {
+        "description":  "maximum",
+        "data":         9,
+        "schema":       { "type": "number", "maximum": 10 },
+        "valid":        true
+    },
+
+    {
+        "description":  "maximum too low",
+        "data":         23,
+        "schema":       { "type": "number", "maximum": 10 },
+        "valid":        false
+    },
+
+    {
+        "description":  "exclusiveMaximum",
+        "data":         9,
+        "schema":       { "type": "number", "exclusiveMaximum": 10 },
+        "valid":        true
+    },
+
+    {
+        "description":  "exclusiveMaximum too low",
+        "data":         10,
+        "schema":       { "type": "number", "exclusiveMaximum": 10 },
+        "valid":        false
+    },
+
+    {
+        "description":  "not number",
+        "data":         "not a number",
+        "schema":       "number",
+        "valid":        false
+    },
+
+    {
+        "description":  "boolean true",
+        "data":         true,
+        "schema":       "boolean",
+        "valid":        true
+    },
+
+    {
+        "description":  "boolean false",
+        "data":         false,
+        "schema":       "boolean",
+        "valid":        true
+    },
+
+    {
+        "description":  "number or string",
+        "data":         1,
+        "schema":       {"type": ["number", "string"]},
+        "valid":        true
+    },
+
+    {
+        "description":  "number or string with error",
+        "data":         false,
+        "schema":       {"type": ["number", "string"]},
+        "valid":        false
+    },
+
+    {
+        "description":  "email",
+        "data":         "somebody@classictic.org",
+        "schema":       { "format": "email" },
+        "valid":        true
+    },
+
+    {
+        "description":  "email with invalid format",
+        "data":         "@classictic.org",
+        "schema":       { "format": "email" },
+        "valid":        false
+    },
+
+    {
+        "description":  "email with unknown domain",
+        "data":         "x@akdjfhlakdfhal.org",
+        "schema":       { "format": "email" },
+        "valid":        false
+    },
+
+    {
+        "description": "array of strings",
+        "data": [
+            "foo",
+            "bar"
+        ],
+        "schema": {
+            "type":    "array",
+            "items":   "string"
+        },
+        "valid": true
+    },
+
+    {
+        "description": "array of strings with error",
+        "data": [
+            "foo",
+            2,
+            "bar"
+        ],
+        "schema": {
+            "type":    "array",
+            "items":   "string"
+        },
+        "valid": false
+    },
+
+    {
+        "description":  "object",
+        "data": {
+            "first_name":  "foo",
+            "last_name":   "bar",
+            "email":       "baz"
+        },
+        "schema": {
+            "type":  "object",
+            "properties": {
+                "first_name":  "string",
+                "last_name":   "string",
+                "email":       "string"
+            },
+            "required": true
+        },
+        "valid": true
+    },
+
+    {
+        "description":  "non-object",
+        "data": "foo",
+        "schema": {
+            "type":  "object",
+            "properties": {
+                "first_name":  "string",
+                "last_name":   "string",
+                "email":       "string"
+            },
+            "required": true
+        },
+        "valid": false
+    },
+
+    {
+        "description":  "required with missing (empty strings)",
+        "data": {
+            "first_name":  "foo",
+            "last_name":   "",
+            "email":       "baz"
+        },
+        "schema": {
+            "type":  "object",
+            "properties": {
+                "first_name":  "string",
+                "last_name":   "string",
+                "email":       "string"
+            },
+            "required": true
+        },
+        "valid": true
+    },
+
+    {
+        "description":  "required with missing properties",
+        "data": {
+            "first_name":  "foo",
+            "email":       "baz"
+        },
+        "schema": {
+            "type":  "object",
+            "properties": {
+                "first_name":  "string",
+                "last_name":   "string",
+                "email":       "string"
+            },
+            "required": true
+        },
+        "valid": false
+    },
+
+    {
+        "description":  "required, partial",
+        "data": {
+            "first_name":  "foo",
+            "last_name":   "baz"
+        },
+        "schema": {
+            "type":  "object",
+            "properties": {
+                "first_name":  "string",
+                "last_name":   "string",
+                "email":       "string"
+            },
+            "required": ["first_name", "last_name"]
+        },
+        "valid": true
+    },
+
+    {
+        "description":  "additionalProperties true",
+        "data": {
+            "first_name":  "foo",
+            "email":       "baz"
+        },
+        "schema": {
+            "type":  "object",
+            "properties": {
+                "first_name":  "string",
+                "last_name":   "string",
+                "email":       "string"
+            }
+        },
+        "valid": true
+    },
+
+    {
+        "description":  "additionalProperties false with error",
+        "data": {
+            "first_name":  "foo",
+            "last_name":  "bla",
+            "email":       "baz"
+        },
+        "schema": {
+            "type":  "object",
+            "properties": {
+                "first_name":  "string",
+                "last_name":   "string"
+            },
+            "additionalProperties": false
+        },
+        "valid": false
+    },
+
+    {
+        "description":  "required",
+        "data": {
+            "first_name":  "foo",
+            "email":       "baz"
+        },
+        "schema": {
+            "type":  "object",
+            "properties": {
+                "first_name":  "string",
+                "last_name":   "string",
+                "email":       "string"
+            },
+            "required": ["first_name"]
+        },
+        "valid": true
+    },
+
+    {
+        "description":  "propertyNames",
+        "data": {
+            "a1":  "foo",
+            "a2":  "baz"
+        },
+        "schema": {
+            "type":  "object",
+            "propertyNames": {
+                "pattern": ".+"
+            }
+        },
+        "valid": true
+    },
+
+    {
+        "description":  "propertyNames with error",
+        "data": {
+            "a1":  "foo",
+            "a2":  "baz"
+        },
+        "schema": {
+            "type":  "object",
+            "propertyNames": {
+                "pattern": "^b+"
+            }
+        },
+        "valid": false
+    },
+
+    {
+        "description":  "minProperties",
+        "data": {
+            "a1":  "foo",
+            "a2":  "baz"
+        },
+        "schema": { "minProperties": 2 },
+        "valid": true
+    },
+
+    {
+        "description":  "minProperties too high",
+        "data": {
+            "a1":  "foo",
+            "a2":  "baz"
+        },
+        "schema": { "minProperties": 3 },
+        "valid": false
+    },
+
+    {
+        "description":  "maxProperties",
+        "data": {
+            "a1":  "foo",
+            "a2":  "baz"
+        },
+        "schema": { "maxProperties": 2 },
+        "valid": true
+    },
+
+    {
+        "description":  "maxProperties too low",
+        "data": {
+            "a1":  "foo",
+            "a2":  "baz"
+        },
+        "schema": { "maxProperties": 1 },
+        "valid": false
+    },
+
+    {
+        "description":  "anyOf over array",
+        "data": ["fo000o", "bar", 2],
+        "schema": {
+            "type":  "array",
+            "items": {
+                "anyOf":  ["number", "string"]
+            }
+        },
+        "valid": true
+    },
+
+    {
+        "description":  "allOf over array",
+        "data": ["foo", "bar"],
+        "schema": {
+            "type":  "array",
+            "items": {
+                "allOf":  [
+                    { "type": "string", "maxLength": 10 },
+                    { "type": "string", "maxLength": 3 }
+                ]
+            }
+        },
+        "valid": true
+    },
+
+    {
+        "description":  "allOf over array with error",
+        "data": ["fo000o", "bar"],
+        "schema": {
+            "type":  "array",
+            "items": {
+                "allOf":  [
+                    { "type": "string", "maxLength": 10 },
+                    { "type": "string", "maxLength": 3 }
+                ]
+            }
+        },
+        "valid": false
+    },
+
+    {
+        "description":  "oneOf over array",
+        "data": ["foo", 1],
+        "schema": {
+            "type":  "array",
+            "items": {
+                "oneOf":  ["string", "number"]
+            }
+        },
+        "valid": true
+    },
+
+    {
+        "description":  "not",
+        "data": "foo",
+        "schema": {
+            "not":  "number"
+        },
+        "valid": true
+    },
+
+    {
+        "description":  "not with error",
+        "data": 42,
+        "schema": {
+            "not":  "number"
+        },
+        "valid": false
+    },
+
+    {
+        "description":  "not over array",
+        "data": ["foo", 1],
+        "schema": {
+            "type":  "array",
+            "items": {
+                "not":  "number"
+            }
+        },
+        "valid": false
+    },
+
+    {
+        "description":  "enum",
+        "data": "think",
+        "schema": {
+            "type":  "string",
+            "enum": ["let", "me", "think"]
+        },
+        "valid": true
+    },
+
+    {
+        "description":  "if",
+        "data": "think",
+        "schema": {
+            "if": "string",
+            "then": {
+                "enum": ["let", "me", "think"]
+            }
+        },
+        "valid": true
+    },
+
+    {
+        "description":  "if with error",
+        "data": {
+            "think": true
+        },
+        "schema": {
+            "if":  {
+                "type":       "object",
+                "properties": {"false": true}
+            },
+            "then": "string",
+            "else": "string",
+            "enum": ["let", "me", "think"]
+        },
+        "valid": false
+    }
+]
